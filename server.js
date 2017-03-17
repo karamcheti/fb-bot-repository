@@ -17,13 +17,13 @@ var activeUsers = [];
 var app = express();
 var Promise = require('promise');
 
-//update SSL certificate
-function setSSL(fs) {
-    CONFIG.ssl = {
-        key: fs.readFileSync('/etc/letsencrypt/live/keplervaani.com/privkey.pem'),
-        cert: fs.readFileSync('/etc/letsencrypt/live/keplervaani.com/cert.pem'),
-        ca: fs.readFileSync('/etc/letsencrypt/live/keplervaani.com/chain.pem')
-    }
+///update SSL certificate
+var ssl = {
+        //        key: fs.readFileSync('./privatekey.pem'),
+       // cert: fs.readFileSync('./server.crt'),
+        key: fs.readFileSync('/etc/letsencrypt/live/www.chainulu.com/privkey.pem'),
+        cert: fs.readFileSync('/etc/letsencrypt/live/www.chainulu.com/cert.pem'),
+        ca: fs.readFileSync('/etc/letsencrypt/live/www.chainulu.com/chain.pem')
 }
 
 //load questions
@@ -123,9 +123,13 @@ app.post('/webhook/', function(req, res) {
 });
 
 // Create an HTTP service.
-http.createServer(app).listen(CONFIG.port);
+http.createServer(app).listen(CONFIG.port,function(){
+        console.log('It\'s showtime baby on port ', CONFIG.port);
+});
 
-// setSSL(fs); //load SSL certificate
+//setSSL(fs); //load SSL certificate
 
 // Create an HTTPS service identical to the HTTP service.
-//https.createServer(ssl, app).listen(CONFIG.listenPort);
+https.createServer(ssl, app).listen(CONFIG.listenPort, function(){
+        console.log('It\'s showtime for SSL on Port ',CONFIG.listenPort);
+});

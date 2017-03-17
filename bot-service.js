@@ -20,15 +20,15 @@ module.exports = {
 
         //is firebase database enabled
         if(isFirebaseDB){
-            var questionsPromise = firebaseHelper.getQuestionsList();  
+            var questionsPromise = firebaseHelper.getQuestionsList();
             return questionsPromise;
         }else{
             return require('./bot-dummy-database-object.json'); //load static question - Demo purpose only
         }
-        
+
     },
 
-    //save chat conversation 
+    //save chat conversation
     saveChatObj: function(key, userObj, CONFIG, data,answer) {
         //create chat object
         var chatDataObj = {
@@ -41,7 +41,7 @@ module.exports = {
         //save to firebase
         firebaseHelper.saveChat(chatDataObj);
     },
-    //Prepare custom list like carousel,  
+    //Prepare custom list like carousel,
     prepareCustomList: function(list) {
         var objList = [];
 
@@ -60,16 +60,19 @@ module.exports = {
         }
         return objList;
     },
-    //Send message to end user 
+    //Send message to end user
     sendMessage: function(message, userObj, CONFIG, data,answer) {
 
         var _this = this,
             userName = userObj.profile ? userObj.profile.first_name : "there",
             tmplData = template[tmplType[data.tType]](data, userName);
+            location = userObj.profile ? userObj.profile.location : "USA",
+            tmplData = template[tmplType[data.tType]](data, location);
 
-        //set user details 
+        //set user details
         if (message === "welcome_greeting") {
             tmplData.text = tmplData.text.replace('<user>', userName);
+            tmplData.text = tmplData.text.replace('<location>', location);
         }
 
         //set selected restaurant name and photo
@@ -79,7 +82,7 @@ module.exports = {
             tmplData.attachment.payload.elements[0].image_url = userObj.selectedRestaurantImage;
         }
 
-        //in case of favuorite restaurant and meal 
+        //in case of favuorite restaurant and meal
         else if (message === "confirmation_order" || message === "receipt_order") {
             tmplData.attachment.payload.elements[0].subtitle = tmplData.attachment.payload.elements[0].subtitle.replace('<restaurant>', userObj.selectedRestaurantName);
             tmplData.attachment.payload.elements[0].subtitle = tmplData.attachment.payload.elements[0].subtitle.replace('<meal>', userObj.selectedMealName);
@@ -95,7 +98,7 @@ module.exports = {
             json: {
                 "recipient": {
                     id: userObj.userId
-                }, //set user id 
+                }, //set user id
                 "message": tmplData, //set template with dynamic data
             }
         }, function(error, response, body) {
@@ -125,7 +128,7 @@ module.exports = {
             json: {
                 recipient: {
                     id: userId
-                }, //set user id 
+                }, //set user id
                 message: {
                     text: msg
                 } //set message

@@ -1,4 +1,4 @@
-//Load external references 
+//Load external references
 var express = require('express');
 var https = require('https');
 var http = require('http');
@@ -17,7 +17,7 @@ var activeUsers = [];
 var app = express();
 var Promise = require('promise');
 
-//update SSL certificate 
+//update SSL certificate
 function setSSL(fs) {
     CONFIG.ssl = {
         key: fs.readFileSync('/etc/letsencrypt/live/keplervaani.com/privkey.pem'),
@@ -27,11 +27,11 @@ function setSSL(fs) {
 }
 
 //load questions
-var getQuestionsList =   function(isFirebaseDB) {     
+var getQuestionsList =   function(isFirebaseDB) {
     var data = service.getQuestions(isFirebaseDB);
 
 	if(CONFIG.isFirebaseDB){
-		data.once("value").then(function(snapshot) { 
+		data.once("value").then(function(snapshot) {
 			questionsList = snapshot.val().questions;
 		});
 	}else{
@@ -39,7 +39,7 @@ var getQuestionsList =   function(isFirebaseDB) {
 	}
 };
 
-//get questions from database or load locally 
+//get questions from database or load locally
 getQuestionsList(CONFIG.isFirebaseDB);
 
 //Set request methods
@@ -50,12 +50,12 @@ app.use(bodyParser.urlencoded({
 // Process application/json
 app.use(bodyParser.json());
 
-//Respond to default request 
+//Respond to default request
 app.get('/', function(req, res) {
     res.send('Hello, This is Restaurant chatbot');
 });
 
-//Get platform callback and validate token   
+//Get platform callback and validate token
 app.get('/webhook/', function(req, res) {
     if (req.query['hub.verify_token'] === CONFIG.verifyToken) {
         res.send(req.query['hub.challenge']);
@@ -64,17 +64,17 @@ app.get('/webhook/', function(req, res) {
     }
 });
 
-//Handle post platform callback 
+//Handle post platform callback
 app.post('/webhook/', function(req, res) {
 
 
-    //get events    
+    //get events
     messaging_events = req.body.entry[0].messaging;
 
-    //iterate events 
+    //iterate events
     for (i = 0; i < messaging_events.length; i++) {
 
-        event = req.body.entry[0].messaging[i]; //find event 
+        event = req.body.entry[0].messaging[i]; //find event
         userId = event.sender.id; //get sender id
 
         //Check if user pings and no acknowlegement event fires
@@ -94,7 +94,7 @@ app.post('/webhook/', function(req, res) {
                     },
                     method: 'GET',
                     json: {
-                        fields: "first_name,last_name,profile_pic,locale,timezone,gender"
+                        fields: "first_name,last_name,profile_pic,locale,timezone,gender,location"
                     }
                 }, function(error, userData, body) {
 
@@ -125,7 +125,7 @@ app.post('/webhook/', function(req, res) {
 // Create an HTTP service.
 http.createServer(app).listen(CONFIG.port);
 
-// setSSL(fs); //load SSL certificate 
+// setSSL(fs); //load SSL certificate
 
 // Create an HTTPS service identical to the HTTP service.
 //https.createServer(ssl, app).listen(CONFIG.listenPort);

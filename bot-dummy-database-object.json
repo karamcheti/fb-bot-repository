@@ -1,6 +1,6 @@
 {
 	"questions": [{
-		"response": "Hi <user>, I am Restaurant Bot. How can I help you today?",
+		"response": "Hi <user>, I am Restaurant Bot. How can I help you today? How is weather in <location>",
 		"key": "welcome_greeting",
 		"tType": "text",
 		"options": []

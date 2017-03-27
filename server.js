@@ -52,7 +52,7 @@ app.use(bodyParser.json());
 
 //Respond to default request
 app.get('/', function(req, res) {
-    res.send('Hello, This is Restaurant chatbot');
+    res.send('Hello, This is my website to act as internet accessible end point for various projects e.g. ChatBot');
 });
 
 //Get platform callback and validate token

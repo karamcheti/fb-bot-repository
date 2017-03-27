@@ -1,6 +1,6 @@
 {
 	"questions": [{
-		"response": "Hi <user>, I am Restaurant Bot. How can I help you today? How is the weather in <location>",
+		"response": "Hi <user>, Welcome to Bed Bath & Beyond. How can I help you today?",
 		"key": "welcome_greeting",
 		"tType": "text",
 		"options": []
@@ -10,7 +10,7 @@
 		"tType": "optionList",
 		"options": [{
 			"id": "see_menu",
-			"name": "See Menu"
+			"name": "Store Locator"
 		}, {
 			"id": "make_reservation",
 			"name": "Make a Reservation"
@@ -19,10 +19,45 @@
 			"name": "Order Takeout"
 		}]
 	}, {
-		"response": "Menu items option is under construction. Kindly choose make reservation.",
-		"key": "see_menu",
+		"response": "What is the zipcode where you want to search.",
+		"key": "zip_code",
 		"tType": "text",
 		"options": []
+	},{
+		"response": "Here are the stores we found based on your zip code",
+		"tType": "carouselList",
+		"key": "locations_list",
+		"options": [
+
+			{
+				"title": "Springfield, NJ",
+				"image_url": "https://s7d9.scene7.com/is/image/BedBathandBeyond/ropis%5Fheader%5F051716?$other$",
+				"subtitle": "Corner of the jeevan bharti building, 11:00 AM - 6:00 PM (Daily)",
+				"buttons": [{
+					"type": "web_url",
+					"payload": "https://stores.bedbathandbeyond.com/Springfield-NJ-07081-1",
+					"title": "Store Details"
+				}]
+			}, {
+				"title": "East Hanover, NJ",
+				"image_url": "https://s7d9.scene7.com/is/image/BedBathandBeyond/bbby%2Dhp%2Dhero?$other$",
+				"subtitle": "Building 6, Phase 3 GGN. 9:00 AM - 11:00 PM (Daily)",
+				"buttons": [{
+					"type": "web_url",
+					"payload": "https://stores.bedbathandbeyond.com/East%20Hanover-NJ-07936-159",
+					"title": "Store Details"
+				}]
+			}, {
+				"title": "Totowa, NJ",
+				"image_url": "http://www.worldblaze.in/wp-content/uploads/2016/06/restaurant-326x190.jpg",
+				"subtitle": "Microsoft, Phase 3. 9:00 AM - 11:00 PM (Daily)",
+				"buttons": [{
+					"type": "web_url",
+					"payload": "https://stores.bedbathandbeyond.com/Totowa-NJ-07512-477",
+					"title": "Store Details"
+				}]
+			}
+		]
 	}, {
 		"response": "Where would you like to make your reservation? Please select.",
 		"tType": "carouselList",

@@ -66,13 +66,11 @@ module.exports = {
         var _this = this,
             userName = userObj.profile ? userObj.profile.first_name : "there",
             tmplData = template[tmplType[data.tType]](data, userName);
-            location = userObj.profile ? userObj.profile.location : "USA",
-            tmplData = template[tmplType[data.tType]](data, location);
+
 
         //set user details
         if (message === "welcome_greeting") {
             tmplData.text = tmplData.text.replace('<user>', userName);
-            tmplData.text = tmplData.text.replace('<location>', location);
         }
 
         //set selected restaurant name and photo

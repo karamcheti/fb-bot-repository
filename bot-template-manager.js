@@ -1,6 +1,6 @@
 //export module 
 module.exports = {
-    //prepare normal text to send 
+    //prepare normal text to send
     getTmplText: function(data) {
         var tmpl;
 
@@ -9,7 +9,7 @@ module.exports = {
         };
         return tmpl;
     },
-    //prepare option list to send 
+    //prepare option list to send
     getTmplOptionList: function(data) {
         var tmpl,
             list = [];
@@ -36,7 +36,7 @@ module.exports = {
         };
         return tmpl;
     },
-    //prepare slider/carousel to send 
+    //prepare slider/carousel to send
     getTmplCarouselList: function(list) {
         var tmpl;
         tmpl = {

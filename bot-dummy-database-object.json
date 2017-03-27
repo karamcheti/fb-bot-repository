@@ -23,7 +23,7 @@
 		"key": "zip_code",
 		"tType": "text",
 		"options": []
-	},{
+	}, {
 		"response": "Here are the stores we found based on your zip code",
 		"tType": "carouselList",
 		"key": "locations_list",

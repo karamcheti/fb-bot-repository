@@ -52,7 +52,7 @@ app.use(bodyParser.json());
 
 //Respond to default request
 app.get('/', function(req, res) {
-    res.send('Hello, This is my website to act as internet accessible end point for various projects e.g. ChatBot');
+    res.send('Hello, This is my website to act as internet accessible end point for various projects like ChatBot');
 });
 
 //Get platform callback and validate token
@@ -83,6 +83,7 @@ app.post('/webhook/', function(req, res) {
             var userObj = _.findWhere(activeUsers, {
                 userId: userId.toString()
             });
+            console.log('User Id : ', userId);
 
             //Get user profile if not exist
             if (typeof(userObj) !== "object") {
@@ -94,7 +95,7 @@ app.post('/webhook/', function(req, res) {
                     },
                     method: 'GET',
                     json: {
-                        fields: "first_name,last_name,profile_pic,locale,timezone,gender,location"
+                        fields: "first_name,last_name,profile_pic,locale,timezone,gender"
                     }
                 }, function(error, userData, body) {
 

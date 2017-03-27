@@ -1,9 +1,9 @@
 var CONFIG = {
     //Facebook API token
-    accessToken: "<Your Facebook Token>",
+    accessToken: "EAASCjVtzg1gBAMUxbQIlYHzbAHJZAu05YlFmo7yhhBORZCp29SVZCQ1ncZAZCV8YCSlDSgjCgzjmxMwRZAjCCeoZAdZClayCKK7kigtQ6g96klYH71yt7f8pJH1TR3tnqVkvjiAGVa5LI6Q9ynJLaPyl5Kjxvj5DKPPJlqDOfZBDLFAZDZD",
 
     //WIT NPL engine API token
-    witToken: "<Your WIT Token>",
+    witToken: "KSI6XZM3GIB4344SUTCOTHGNKPSD226Y",
 
     port: 8080,
     ssl: {
@@ -15,32 +15,40 @@ var CONFIG = {
     isFirebaseDB : false,
 
     //Application token to verify with Facebook API
-    verifyToken: "botdemo", //it can any string you want, but should match to facebook webhook token
+    verifyToken: "botdemo", //it can any string you want, but should match to facebook webhook token 
 
     listenPort: 443,
 
-    //Set default messages
+    //Set default messages 
     defaultAuthMsg: "User not authorized, kindly try again with different credentials.",
     defaultQueryMsg: "Will be glad to help you. Kindly write to us keplerlab@sapient.com",
-
+    
     //firebase API token
     firebase : {
-        apiKey: "<Your firebase api key>",
-        authDomain: "<Domain name>",
-        databaseURL: "<Database url>",
-        storageBucket: "<Storage key>",
-        messagingSenderId: "<Sender id>",
+        apiKey: "AIzaSyDN9EYO8Dlg8wjX8V7YebcA878-TEEmDJA",
+        authDomain: "botdemo-a4c02.firebaseapp.com",
+        databaseURL: "https://botdemo-a4c02.firebaseio.com",
+        storageBucket: "botdemo-a4c02.appspot.com",
+        messagingSenderId: "958286739360",
         serviceAccount : {
-
+	"type": "service_account",
+	"project_id": "botdemo-a4c02",
+  	"private_key_id": "f5e3bae611f2f4be71510c363a09299f53649e78",
+  	"private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDK//N6WcVvaJNt\n/Fx/Bp4/DERx5s8hue/m/Fxq4O4ym9k+tFwHIuGW1DJ0p+r6FsJJN18tvpMGtpsw\nO009Aj7HAxfB3Bzhgydhv05JWZS1gWw3XkhLrgtjAGJXHggVOINeXQAAPfIos0//\ne8bxseQp0YYNAjJmVhTR96xRR+E8+JfuvXg/oEkzwXrW/SA+YQtnbcuZWXXXBISt\n5TAYbW+dzh43cz2BqTArflje7cfJOytAF/eSX+vkO+dA0GKraqJUmsyLRbVFGZku\nDyFPISNSJ9SwQiHeJjY6dKoX5Z8zhA0JG+M8h8gGNex1q8Vl/aT8v1mMQNCw7Is0\nBGiI3pzrAgMBAAECggEAHWa8yPe/lMc8sy1d6Df5K4CHWUfosCXSDU53xDMXzNSt\nvls5CP+QVNwfAq5fZiFtulT+wA1eFhbUm0O7iB6PIRvdkQJkXHU2ev3OROlolHFO\nTyakqfFnTMt9csiyuwAYZs5pdZ+DN0nhSEuRIOh292eVVsT+r7vAADkzCAK1KLNG\nZ+C8fqvrYnyMIjPtL0hSO1E2BjsylJYgutIJ/UabLbxwQWwlFdV2ELovbJkBiO5q\nfDM5NNnpK/DdzxbieYsmj+tk47NVqjldny0Jh3FhXwjj9Roz9F6wYUnKsq0IvFBy\nqEI9AIfUkLt9B/rVL0BzGBqLQobpchfOAvIQraCPoQKBgQD4NOWIcy/iWaQiNLGJ\nYaYMCbf6TJzAfR5DHuGxD0lvyklONU/iMuzqDlrYuk1+MagaVcX/oSJq9LdJRfSf\nr7ZE8ZGSw4oL2qixstDM71PYeV8rq/RSA7bc1hkBCQ5kkEra2I97ikCMe8ESuY/M\nVJo6o7w5bYYCwn7qzZucrNuWtwKBgQDRX62+1j64qxSlJ6I71SNihI/qV9DcMaQX\nBzm8+jyxEHtD7fQlNMaGdZgB2Rkp7k/DtdgiOrsFlBajzoA8qSHcR3lKokrj2EoS\nS5i22yN3f4F8hDEWVm0QP/GdSVGwaBK15Hf7T1RdSs48Wgy6+wNWstUT5pLIFCcR\n7ICl5NMXbQKBgHRWZtfEFcekeJhH1ocsK+Ysj/1T940JmCuhx+tz3Nn3GND9kAnY\nEM/MFqzK9hOWNtLRLVMaNcWoGljP308Rzv8Vs0P1Pzk7LiLMS64i50vp57/Sg1wF\nvapY97NSiVp9f3iAVRB0xriSMPcT3uDJLtkZcdoBCfU1MMPhx3RyWSKVAoGAUTDv\nKV/fdrExElJqQRWH4T5SqKdhIOJHJX7xzuyi+G7RvifaU0tB6QZU6fKMJYx6dgRg\nSfXIbINevCrp45wau1ckG+MPc4d+QdX65H3aJQ7W4bhJaMYfCPwi78Fs4iGZj9uH\nA3dh2cOWciThZujMBKTYqBzzso7OD89MnAg+K4kCgYAjjy08DGVZ+R36ilAa4FHt\nbOvgAt1XnCBKCC2/H4ExEZMAb7muIy/cPCwnGJeQM/1VXymjJc7NOIFBeRfEsYSH\nLZzyDdjuRC8uE6JRFIpoGxcw5s/5DngAJ/egE/1E1ccIJSULprPdVmW52UXsuALe\nznqj5vMnn0JzZLFQtBkppg==\n-----END PRIVATE KEY-----\n",
+ 	 "client_email": "firebase-adminsdk-ofabd@botdemo-a4c02.iam.gserviceaccount.com",
+  	"client_id": "100831611918166186264",
+  	"auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  	"token_uri": "https://accounts.google.com/o/oauth2/token",
+  	"auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+ 	 "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-ofabd%40botdemo-a4c02.iam.gserviceaccount.com"
         } //Firebase private key
     },
 
-    //chatbot key mapping (Mapping between user response and next questions to ask from end user)
+    //chatbot key mapping (Mapping between user response and next questions to ask from end user) 
     keyMapped: {
         "welcome_greeting": "welcome_greeting",
         "select_menu": "select_menu",
-        "see_menu": "zip_code",
-        "zip_code":"locations_list"
+        "see_menu": "see_menu",
         "make_reservation": "select_restaurant",
         "restaurant_1": "no_of_people",
         "restaurant_2": "no_of_people",
@@ -70,7 +78,7 @@ var CONFIG = {
         "burger": "select_restaurant_cousine",
         "sub": "select_restaurant_cousine",
         "restaurant_cousine_1": "pre_order",
-
+        
         "restaurant_cousine_2": "pre_order",
         "restaurant_cousine_3": "pre_order",
         "restaurant_cousine_4": "pre_order",
@@ -82,7 +90,7 @@ var CONFIG = {
         "meal_2": "other_items",
         "meal_3": "other_items",
         "meal_4": "other_items",
-
+        
         "meal_5": "other_items",
         "meal_6": "other_items",
         "drinks": "drinks",
